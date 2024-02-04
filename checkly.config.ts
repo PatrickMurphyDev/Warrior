@@ -4,14 +4,14 @@ import { EmailAlertChannel, Frequency } from 'checkly/constructs';
 
 const emailChannel = new EmailAlertChannel('email-channel-1', {
   // FIXME: add your own email address, Checkly will send you an email notification if a check fails
-  address: 'contact@creativedesignsguru.com',
+  address: 'patrickmurphydev@gmail.com',
   sendDegraded: true,
 });
 
 export const config = defineConfig({
-  projectName: 'Next.js Boilerplate',
-  logicalId: 'nextjs-boilerplate',
-  repoUrl: 'https://github.com/ixartz/Next-js-Boilerplate',
+  projectName: 'Warrior Quick Stop',
+  logicalId: 'warrior-quick-stop-wepapp',
+  repoUrl: 'https://github.com/PatrickMurphyDev/Warrior',
   checks: {
     locations: ['us-east-1', 'eu-west-1'],
     tags: ['website'],
@@ -20,7 +20,7 @@ export const config = defineConfig({
       {
         key: 'PRODUCTION_URL',
         // FIXME: Add your own production URL
-        value: 'https://google.com',
+        value: 'https://warriorquickstop.com',
       },
     ],
     browserChecks: {
