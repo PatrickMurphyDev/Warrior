@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
@@ -18,25 +17,25 @@ export default function About() {
   const t = useTranslations('About');
 
   return (
-    <>
+    <div>
+      <h1>About Warrior Quick Stop</h1>
       <p>{t('about_paragraph')}</p>
 
-      <div className="mt-2 text-center text-sm">
-        {`${t('translation_powered_by')} `}
-        <a href="https://l.crowdin.com/next-js" target="_blank">
-          Crowdin
-        </a>
+      <h2>Contact Information</h2>
+      <div>
+        <p>
+          <span>Icon</span> Phone:{' '}
+        </p>
+        <p>Address: </p>
+        <p>Email: </p>
       </div>
 
-      <a href="https://l.crowdin.com/next-js">
-        <Image
-          className="mx-auto mt-2"
-          src="https://support.crowdin.com/assets/logos/core-logo/svg/crowdin-core-logo-cDark.svg"
-          alt="Crowdin Translation Management System"
-          width={130}
-          height={112}
-        />
-      </a>
-    </>
+      <h3>Managment & Ownership</h3>
+      <div>
+        <h4>Victor Singh (phone/email)</h4>
+        <h4>Harsh Singh (phone/email)</h4>
+        <h4>Gary Singh (phone/email)</h4>
+      </div>
+    </div>
   );
 }

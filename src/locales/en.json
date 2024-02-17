@@ -2,18 +2,20 @@
   "RootLayout": {
     "home_link": "Home",
     "about_link": "About",
-    "guestbook_link": "Guestbook",
+    "locations_link": "Locations",
     "portfolio_link": "Portfolio",
     "sign_in_link": "Sign in",
     "sign_up_link": "Sign up"
   },
   "BaseTemplate": {
-    "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
+    "description": "Fuel Stations and Convenience Stores Serving Kittitas County",
     "made_with": "Made with"
   },
   "Index": {
-    "meta_title": "Next.js Boilerplate Presentation",
-    "meta_description": "Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
+    "meta_title": "Warrior's Quick Stop - Fuel, Snacks, Tobacco/Vapes and more!",
+    "meta_description": "Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework.",
+    "body_header_title": "Welcome to Warrior Quick Stop!",
+    "body_header_description": "Warrior convenience stores strive to provide superior customer service, selection and value to the communities we serve and live in."
   },
   "Guestbook": {
     "meta_title": "Guestbook",
@@ -29,23 +31,20 @@
   "About": {
     "meta_title": "About",
     "meta_description": "About page description",
-    "about_paragraph": "Welcome to our About page! We are a team of passionate individuals dedicated to creating amazing software.",
+    "about_paragraph": "Warrior Quick Stop desc",
     "translation_powered_by": "Translation powered by"
   },
-  "Portfolio": {
-    "meta_title": "Portfolio",
-    "meta_description": "Welcome to my portfolio page!",
-    "presentation": "Welcome to my portfolio page! Here you will find a carefully curated collection of my work and accomplishments. Through this portfolio, I'm to showcase my expertise, creativity, and the value I can bring to your projects.",
-    "portfolio_name": "Portfolio {name}",
-    "monitoring_powered_by": "Monitoring powered by"
+  "location": {
+    "meta_title": "Warrior Quick Stop Locations",
+    "meta_description": "List of Warrior Quick Stop locations with services provided at each location",
+    "presentation": "Warrior Locations can be found in Central Washington, USA. We aim to proivide the best prices, customer service and selection.",
+    "location_name": "Warrior's {name}"
   },
-  "PortfolioSlug": {
-    "meta_title": "Portfolio {slug}",
-    "meta_description": "Portfolio {slug} description",
-    "header": "Portfolio {slug}",
-    "content": "Created a set of promotional materials and branding elements for a corporate event. Crafted a visually unified theme, encompassing a logo, posters, banners, and digital assets. Integrated the client's brand identity while infusing it with a contemporary and innovative approach. Garnered favorable responses from event attendees, resulting in a successful event with heightened participant engagement and increased brand visibility.",
-    "error_reporting_powered_by": "Error reporting powered by",
-    "coverage_powered_by": "Code coverage powered by"
+  "LocationSlug": {
+    "meta_title": "Warrior's Quick Stop - {slug}",
+    "meta_description": "Warrior's Quick Stop {slug} description",
+    "header": "Warrior's {slug}",
+    "content": ""
   },
   "SignIn": {
     "meta_title": "Sign in",
@@ -66,5 +65,7 @@
     "dashboard_link": "Dashboard",
     "user_profile_link": "Manage your account",
     "sign_out": "Sign out"
-  }
+  },
+  "meta_title": "Warrior Quick Stop Gas Stations Locations",
+  "meta_description": "Warrior Quick Stop has various locations across Central Washington State, in Cle Elum, WA; Ellensburg, WA; Yakima, WA; that offer various services including gas, vapes, tobacco, beer, wine, seltzer, convienience items and more"
 }
