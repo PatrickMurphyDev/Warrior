@@ -17,17 +17,16 @@ const BaseTemplate = (props: {
       <div className="mx-auto max-w-screen-lg">
         <header className="border-b border-gray-300">
           <div
-            className="relative h-28 w-full"
+            className="relative h-20  w-full md:h-28 xl:h-28"
             style={{ overflow: 'hidden', backgroundColor: '#232323' }}
           >
             <img
               alt="Warrior Gas Station Cle Elum"
-              src="/assets/images/layout-header.png"
+              src="/assets/images/layout-header-trim-center.png"
+              className="inline-block size-full"
               style={{
-                display: 'block',
-                position: 'absolute',
-                top: -243,
-                left: 0,
+                objectFit: 'cover',
+                objectPosition: 'center',
               }}
             />
           </div>
@@ -35,17 +34,15 @@ const BaseTemplate = (props: {
             style={{
               color: AppConfig.colors[0],
               backgroundColor: AppConfig.colors[1],
+              position: 'relative',
             }}
           >
             <h1
-              className="pl-4 text-3xl font-bold"
+              className="inline-block h-12 w-full pl-4 align-middle text-xl font-bold md:w-2/5 md:text-2xl xl:w-2/5 xl:text-3xl"
               style={{
                 color: AppConfig.colors[0],
                 backgroundColor: AppConfig.colors[1],
-                display: 'inline-block',
-                width: '39%',
                 textShadow: '#444 1px 1px 2px',
-                height: '1.7em',
               }}
             >
               <span
@@ -56,37 +53,28 @@ const BaseTemplate = (props: {
                   backgroundColor: AppConfig.colors[0],
                 }}
               >
-                <span
-                  className="relative inline-block"
-                  style={{ width: '40px', height: '35px' }}
-                >
+                <span className="relative mx-2 inline-block size-full">
                   <Image
                     src="/assets/images/logo_125.png"
                     alt="warrior logo"
                     style={{
                       objectFit: 'cover',
-                      objectPosition: '-1px 1px',
+                      objectPosition: 'center center',
+                      left: '-12px',
                     }}
                     unoptimized
                     fill
                   />
                 </span>
               </span>
-              {AppConfig.name}
+              <span>{AppConfig.name}</span>
             </h1>
-            <h2
-              className="float-right align-middle text-base"
-              style={{
-                width: '60%',
-                display: 'inline-block',
-                height: '1.7em',
-                lineHeight: '1.7em',
-              }}
-            >
+            <h2 className="relative float-right hidden align-middle text-base md:inline-block md:w-3/5 xl:inline-block xl:w-3/5">
               <span
+                className="h-full"
                 style={{
-                  paddingRight: 10,
-                  float: 'right',
+                  position: 'absolute',
+                  right: 10,
                 }}
               >
                 {t('description')}
@@ -101,7 +89,7 @@ const BaseTemplate = (props: {
               </ul>
             </nav>
 
-            <nav>
+            <nav className="hidden md:inline-block xl:inline-block">
               <ul className="flex flex-wrap gap-x-5 text-xl">
                 {props.rightNav}
               </ul>
