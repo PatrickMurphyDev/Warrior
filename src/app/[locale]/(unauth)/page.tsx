@@ -42,35 +42,26 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 
 export function WelcomeRow() {
   return (
-    <div style={{ overflow: 'hidden', position: 'relative', width: '100%' }}>
-      <div style={{ width: '34%' }}>
-        <p>
-          Warrior convenience stores strive to provide superior customer
-          service, selection and value to the communities we serve and live in.
-        </p>
-      </div>
-      <div
-        style={{
-          width: '65%',
-          height: '100%',
-          display: 'inline-block',
-          overflow: 'hidden',
-          position: 'absolute',
-          minHeight: 50,
-          top: 0,
-          right: 0,
-        }}
-      >
-        <Image
-          src="/assets/images/gas3.jpg"
-          alt="image of gas station fuel hose dispensing into car"
-          style={{
-            objectFit: 'cover',
-            objectPosition: 'center -120px',
-          }}
-          className="rounded-md drop-shadow-md"
-          fill
-        />
+    <div className="relative w-full overflow-hidden">
+      <div>
+        <div className="relative inline-block h-16 w-full overflow-hidden md:absolute md:right-0 md:top-0 md:h-40 md:w-2/3">
+          <Image
+            src="/assets/images/gas3.jpg"
+            alt="image of gas station fuel hose dispensing into car"
+            style={{
+              objectPosition: 'center -120px',
+            }}
+            className="rounded-md object-cover drop-shadow-md"
+            fill
+          />
+        </div>
+        <div className="text-xs md:w-1/3 md:text-lg">
+          <p className="md:py- !my-0 !py-0 md:my-3">
+            Warrior convenience stores strive to provide superior customer
+            service, selection and value to the communities we serve and live
+            in.
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -78,22 +69,11 @@ export function WelcomeRow() {
 
 export function LocationsRow() {
   return (
-    <div style={{ display: 'relative' }}>
-      <div
-        style={{ width: '80%', display: 'inline-block' }}
-        className="float-right"
-      >
+    <div className="relative">
+      <div className="float-right inline-block w-full md:w-4/5 xl:w-4/5">
         <LocationsOverview />
       </div>
-      <div
-        style={{
-          width: '19%',
-          display: 'inline-block',
-          overflow: 'hidden',
-          position: 'relative',
-          minHeight: 390,
-        }}
-      >
+      <div className="relative hidden w-1/5 overflow-hidden md:inline-block">
         <Image
           src="/assets/images/gas2.jpg"
           alt="Close Up of Gas Pumps"
@@ -132,42 +112,52 @@ export function ImageCardRow() {
 export default function Index() {
   return (
     <div>
-      <h1
-        style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}
-        className="mb-1"
-      >
-        Welcome to Warrior Quick Stop!
-      </h1>
-      <WelcomeRow />
-      <br />
-      <LocationsRow />
-      <br />
-      <h2
-        style={{
-          borderBottom: `4px solid ${AppConfig.colors[1]}`,
-          textAlign: 'center',
-          marginBottom: '.6em',
-        }}
-      >
-        Why Visit Warrior&apos;s Quick Stop?
-      </h2>
-      <ImageCardRow />
+      <div>
+        <h1
+          style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}
+          className="mb-1"
+        >
+          Welcome to Warrior Quick Stop!
+        </h1>
+      </div>
+      <div>
+        <WelcomeRow />
+      </div>
+      <br className="clear-both" />
+      <div>
+        <LocationsRow />
+      </div>
+      <br className="clear-both" />
+      <div>
+        <div className="relative rounded border border-solid border-gray-300 p-4 shadow-md">
+          <h2
+            className="mb-2 text-center"
+            style={{
+              borderBottom: `4px solid ${AppConfig.colors[1]}`,
+            }}
+          >
+            Why Visit Warrior&apos;s Quick Stop?
+          </h2>
+          <ImageCardRow />
+        </div>
+      </div>
       <div>
         <br />
-        <br />
-        <h2 style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}>
-          Services & Products
-        </h2>
-        <ul className="ml-8 list-disc">
-          <li>Gasoline & Diesel</li>
-          <li>Propane</li>
-          <li>Vapes</li>
-          <li>Ciggarettes</li>
-          <li>Beer</li>
-          <li>Car Wash</li>
-          <li>Tire Service & Oil Change</li>
-          <li>More...</li>
-        </ul>
+        <div className="relative rounded border border-solid border-gray-300 p-4 shadow-md">
+          <h2 style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}>
+            Services & Products
+          </h2>
+          <ul className="ml-8 list-disc">
+            <li>Gasoline & Diesel</li>
+            <li>Propane</li>
+            <li>Vapes</li>
+            <li>Cigarettes</li>
+            <li>Beer</li>
+            <li>Car Wash</li>
+            <li>Tire Service & Oil Change</li>
+            <li>More...</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

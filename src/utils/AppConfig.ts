@@ -24,12 +24,21 @@ export interface ILocationDetails {
   isOpen: boolean;
   key: string;
   name: string;
+  description: string;
   imageList: Array<string>;
   services: Array<string>;
   address: IAddress;
   address_notes: string;
   phone_number: string;
   hours: ILocationHours;
+}
+export interface IAboutPageDetails {
+  imageSrcURL: string;
+  pageTitle: string;
+  phoneNumber: string;
+  address: IAddress;
+  email: string;
+  staff: Array<String>;
 }
 
 export interface IAppConfig {
@@ -41,6 +50,7 @@ export interface IAppConfig {
   locationArray: Array<string>;
   locationDetailsArray: Array<ILocationDetails>;
   defaultLocationDetails: ILocationDetails;
+  aboutPageDetails: IAboutPageDetails;
 }
 
 export const AppConfig: IAppConfig = {
@@ -56,6 +66,7 @@ export const AppConfig: IAppConfig = {
       isOpen: true,
       key: 'Cle-Elum-West',
       name: 'Cle Elum West',
+      description: '',
       address: {
         line1: '901 E 1st St',
         line2: '',
@@ -82,6 +93,7 @@ export const AppConfig: IAppConfig = {
       isOpen: true,
       key: 'Cle-Elum-East',
       name: 'Cle Elum East',
+      description: '',
       address: {
         line1: '912 E 1st St',
         line2: '',
@@ -108,6 +120,8 @@ export const AppConfig: IAppConfig = {
       isOpen: false,
       key: 'Ellensburg',
       name: 'Ellensburg',
+      description:
+        'The Warrior Quick Stop just recently opened on 204 S Main, Ellensburg, WA, we are convenience store and gas station offering a wide variety of products for people on the go. If you need great hot food, sodas, or freezing cold Slushies or Icees we have them here. If you need an ATM, please stop by. Our fast and friendly team is always happy to serve you! We will see you on the road in the future. Thank you for stoping in',
       address: {
         line1: '204 S Main St',
         line2: '',
@@ -115,7 +129,18 @@ export const AppConfig: IAppConfig = {
         state: 'WA',
         zipcode: 98926,
       },
-      imageList: ['vape-girl-1.jpg', 'vape-girl-2.jpg'],
+      imageList: [
+        'vape-girl-1.jpg',
+        'vape-girl-2.jpg',
+        'vape-girl-1.jpg',
+        'vape-girl-2.jpg',
+        'vape-girl-1.jpg',
+        'vape-girl-2.jpg',
+        'vape-girl-1.jpg',
+        'vape-girl-2.jpg',
+        'vape-girl-1.jpg',
+        'vape-girl-2.jpg',
+      ],
       services: [],
       address_notes: '',
       phone_number: '509-899-0222',
@@ -135,6 +160,7 @@ export const AppConfig: IAppConfig = {
     isOpen: true,
     key: 'Cle-Elum-West',
     name: 'Cle Elum West',
+    description: '',
     address: {
       line1: '901 E 1st ST',
       line2: '',
@@ -145,6 +171,7 @@ export const AppConfig: IAppConfig = {
     imageList: ['gas-station-night.jpg'],
     services: ['Gas', 'Hot Food', 'Car Wash'],
     address_notes: '',
+    phone_number: '',
     hours: {
       monday: { hour_open: 4.5, hour_close: 23 },
       tuesday: { hour_open: 4.5, hour_close: 23 },
@@ -154,6 +181,20 @@ export const AppConfig: IAppConfig = {
       saturday: { hour_open: 4.5, hour_close: 24 },
       sunday: { hour_open: 4.5, hour_close: 23 },
     },
+  },
+  aboutPageDetails: {
+    imageSrcURL: '/assets/images/bmw-outside.jpg',
+    pageTitle: "About Warrior's Quick Stop",
+    phoneNumber: '(509) 899-5555',
+    email: 'warriorquickstop@gmail.com',
+    address: {
+      line1: '204 S Main St',
+      line2: '',
+      city: 'Ellensburg',
+      state: 'WA',
+      zipcode: 98926,
+    },
+    staff: ['Victor Singh', 'Harsh Singh', 'Gary Singh'],
   },
 };
 
