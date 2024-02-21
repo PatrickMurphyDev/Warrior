@@ -31,13 +31,13 @@
   "About": {
     "meta_title": "About",
     "meta_description": "About page description",
-    "about_paragraph": "Warrior Quick Stop desc",
+    "about_paragraph": "The Warrior Quick Stop is a group of convenience stores and gas stations offering a wide variety of products for people on the go. If you need great hot food, sodas, or freezing cold Slushies or Icees we have them here. If you need an ATM, please stop by. Our fast and friendly team is always happy to serve you! We will see you on the road in the future. Thank you for stopping in!",
     "translation_powered_by": "Translation powered by"
   },
   "location": {
     "meta_title": "Warrior Quick Stop Locations",
     "meta_description": "List of Warrior Quick Stop locations with services provided at each location",
-    "presentation": "Warrior Locations can be found in Central Washington, USA. We aim to proivide the best prices, customer service and selection.",
+    "presentation": "Warrior Locations can be found in Kittitas County, Washington State, USA.  We aim to proivide the best prices, customer service and selection of products.",
     "location_name": "Warrior's {name}"
   },
   "LocationSlug": {
