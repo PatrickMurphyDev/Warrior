@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unsafe-optional-chaining */
 import Image from 'next/image';
@@ -33,12 +34,12 @@ export function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
   const data =
     AppConfig.locationDetailsArray[
       AppConfig.locationArray.indexOf(props.params.slug)
-    ];
+    ] || AppConfig.defaultLocationDetails;
   let photoIndexVar = 0;
   if (props.photoID) {
     photoIndexVar = props.photoID;
   }
-  const imgUrl = `/assets/images/${data?.imageList[photoIndexVar]}`;
+  const imgUrl = `/assets/images/${data.imageList[photoIndexVar]}`;
 
   return (
     <div className="relative m-1 rounded border border-solid border-gray-300 p-1 shadow-md">
@@ -78,7 +79,7 @@ const LocationDetailPhotosPage = (props: ILocationDetailPropsSlug) => {
   const data =
     AppConfig.locationDetailsArray[
       AppConfig.locationArray.indexOf(props.params.slug)
-    ];
+    ] || AppConfig.defaultLocationDetails;
 
   let photoMapId = 0;
   return (
