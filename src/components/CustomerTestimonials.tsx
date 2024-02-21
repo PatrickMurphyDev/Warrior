@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { AppConfig } from '@/utils/AppConfig';
 
-import { LocationsOverviewLocationListItem } from './LocationDetails';
+import { LocationDetails } from './LocationDetails';
 
 const CustomerTestimonials = () => (
   <div>
@@ -41,7 +41,7 @@ const CustomerTestimonials = () => (
         >
           <ol>
             {Array.from(AppConfig.locationArray).map((elt) => (
-              <LocationsOverviewLocationListItem key={elt} id={elt} />
+              <LocationDetails key={elt} id={elt} />
             ))}
           </ol>
         </div>
