@@ -46,7 +46,6 @@ export function LocationDetailsAddress(props: ILocationDetailPropList) {
 export function OpenStatusLabel(props: ILocationDetailPropList) {
   const LocationDetailsDataObj: ILocationDetails = getDataObject(props);
   const openStatusLabelCSSClasses = [
-    'float-right',
     'mr-3',
     'mt-3',
     'rounded-md',
@@ -135,20 +134,17 @@ function LocationDetails(props: ILocationDetailPropList): React.ReactNode {
       href={{
         pathname: `/location/${LocationDetailsDataObj.key}`,
       }}
+      className="flex w-full grow"
       style={{ textDecoration: 'none', border: 'none', color: '#222' }}
     >
-      <li
-        className="inline-block w-full rounded-md border-2 border-solid border-gray-500 pl-2  shadow-lg"
-        style={{
-          height: '93px',
-          marginBottom: '10px',
-        }}
-      >
-        <div>
+      <li className="flex w-full rounded-md border-2 border-solid border-gray-500 p-3 shadow-md">
+        <div className="grow flex-col">
           <span>{LocationDetailsDataObj.name}</span>
+          <LocationDetailsAddress id={props.id} />
+        </div>
+        <div>
           <OpenStatusLabel id={props.id} />
         </div>
-        <LocationDetailsAddress id={props.id} />
       </li>
     </Link>
   );

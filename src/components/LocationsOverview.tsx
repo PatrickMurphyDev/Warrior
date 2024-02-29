@@ -5,52 +5,25 @@ import { AppConfig } from '@/utils/AppConfig';
 import { LocationDetails } from './LocationDetails';
 
 // color: AppConfig.colors[0], // make h1 yellow
+// style={{ backgroundColor: '#f0eee8' }}
 const LocationsOverview = () => (
-  <div>
-    <div>
-      <h1
-        style={{
-          borderColor: AppConfig.colors[1],
-          borderBottomWidth: 3,
-          paddingLeft: 10,
-          marginBottom: 7,
-        }}
-      >
-        Warrior Locations
-      </h1>
-      <div style={{ backgroundColor: '#f0eee8' }}>
-        <Image
-          alt="Warrior Quick Stop Location Map"
-          src="/assets/images/map_cleelum_ellensburg.svg"
-          width={100}
-          height={300}
-          style={{
-            width: '60%',
-            height: '300px',
-            borderWidth: 1,
-            borderColor: '#222',
-            display: 'block',
-            float: 'left',
-            backgroundColor: '#f0eee8',
-          }}
-        />
-        <div
-          style={{
-            width: '39%',
-            height: '300px',
-            display: 'block',
-            float: 'left',
-          }}
-        >
-          <ol>
-            {Array.from(AppConfig.locationArray).map((elt) => (
-              <LocationDetails key={elt} id={elt} />
-            ))}
-          </ol>
-        </div>
-      </div>
+  <div className="flex w-full flex-row-reverse justify-end gap-3">
+    <ol className="grid w-5/12 gap-3">
+      {Array.from(AppConfig.locationArray).map((elt) => (
+        <LocationDetails key={elt} id={elt} />
+      ))}
+    </ol>
+    <div
+      className="relative inline-block grow flex-col"
+      style={{ backgroundColor: '#f0eee8' }}
+    >
+      <Image
+        alt="Warrior Quick Stop Location Map"
+        src="/assets/images/map_cleelum_ellensburg.svg"
+        fill
+        className="inline-block justify-end overflow-hidden border border-gray-900"
+      />
     </div>
-    <br className="clear-both" />
   </div>
 );
 
