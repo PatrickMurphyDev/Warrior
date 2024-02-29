@@ -6,6 +6,28 @@ import { useEffect, useState } from 'react';
 
 import { AppConfig } from '@/utils/AppConfig';
 
+const inMin: number = 0.0;
+const inMax: number = 170.0;
+const outMin: number = 120.0;
+const outMax: number = 55.0;
+
+const BaseTemplateHeaderController = function (
+  inValParam: number,
+  inMinParam: number,
+  inMaxParam: number,
+  outMinParam: number,
+  outMaxParam: number,
+) {
+  if (inValParam >= inMaxParam) {
+    return outMaxParam;
+  }
+  return (
+    ((Math.round(inValParam) - inMinParam) * (outMaxParam - outMinParam)) /
+      (inMaxParam - inMinParam) +
+    outMinParam
+  );
+};
+
 export function BaseTemplateHeaderSubTitle() {
   const t = useTranslations('BaseTemplate');
 
@@ -27,18 +49,44 @@ export function BaseTemplateHeaderSubTitle() {
 export function BaseTemplateHeaderMainTitle() {
   return (
     <h1
-      className="inline-block h-12 w-full pl-4 align-middle text-xl font-bold md:w-2/5 md:text-2xl xl:w-2/5 xl:text-3xl"
+      className="inline-block w-full pl-4 align-middle font-bold md:w-2/5 xl:w-2/5"
       style={{
         color: AppConfig.colors[0],
         backgroundColor: AppConfig.colors[1],
         textShadow: '#444 1px 1px 2px',
+        height: BaseTemplateHeaderController(
+          window.scrollY,
+          inMin,
+          inMax,
+          48,
+          36,
+        ),
+        fontSize: BaseTemplateHeaderController(
+          window.scrollY,
+          inMin,
+          inMax,
+          30,
+          28,
+        ),
       }}
     >
       <span
-        className="relative mr-2 inline-block rounded-full align-bottom shadow-sm"
+        className="relative mr-2 mt-1 inline-block rounded-full align-top shadow-sm"
         style={{
-          width: '40px',
-          height: '40px',
+          width: `${BaseTemplateHeaderController(
+            window.scrollY,
+            inMin,
+            inMax,
+            40,
+            28,
+          )}px`,
+          height: `${BaseTemplateHeaderController(
+            window.scrollY,
+            inMin,
+            inMax,
+            40,
+            28,
+          )}px`,
           backgroundColor: AppConfig.colors[0],
         }}
       >
@@ -49,7 +97,7 @@ export function BaseTemplateHeaderMainTitle() {
             style={{
               objectFit: 'cover',
               objectPosition: 'center center',
-              left: '-12px',
+              left: '-33%',
             }}
             unoptimized
             fill
@@ -63,20 +111,18 @@ export function BaseTemplateHeaderMainTitle() {
 
 export default function BaseTemplateHeaderImage() {
   const [small, setSmall] = useState(100);
-  const inMin = 0.0;
-  const outMax = 55.0;
-  const outMin = 120.0;
-  const inMax = 170.0;
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
         if (window.scrollY <= inMax) {
           setSmall(
-            window.scrollY >= inMax
-              ? outMax
-              : ((Math.round(window.scrollY) - inMin) * (outMax - outMin)) /
-                  (inMax - inMin) +
-                  outMin,
+            BaseTemplateHeaderController(
+              window.scrollY,
+              inMin,
+              inMax,
+              outMin,
+              outMax,
+            ),
           );
         }
       });
