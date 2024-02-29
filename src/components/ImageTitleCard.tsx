@@ -13,10 +13,7 @@ const ImageTitleCard = function ImageTitleCard(
   const altTextTemp = props.altText || 'Image Alt Text Undefined';
   const titleTemp = props.title || 'Title Not Defined';
   return (
-    <div
-      style={{ marginRight: '6.25%' }}
-      className="float-right w-1/4 rounded-md border-2 border-gray-600 shadow-md"
-    >
+    <div className="inline-block grow rounded-md border-2 border-gray-600 shadow-md">
       <div
         style={{
           position: 'relative',

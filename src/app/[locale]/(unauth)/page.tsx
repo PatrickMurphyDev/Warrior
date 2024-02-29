@@ -18,12 +18,19 @@ export async function generateMetadata(props: { params: { locale: string } }) {
     description: t('meta_description'),
   };
 }
-
+// md:absolute md:right-0 md:top-0 md:h-40 md:w-2/3
 const WelcomeRow = function WelcomeRow() {
   return (
-    <div className="relative w-full overflow-hidden">
-      <div>
-        <div className="relative inline-block h-16 w-full overflow-hidden md:absolute md:right-0 md:top-0 md:h-40 md:w-2/3">
+    <div className="relative flex overflow-hidden">
+      <div className="flex flex-row justify-center gap-4">
+        <div className="md:text-lg">
+          <p className="!my-0 !py-0 md:my-3 md:py-1">
+            Warrior convenience stores strive to provide superior customer
+            service, selection and value to the communities we serve and live
+            in.
+          </p>
+        </div>
+        <div className="relative inline-block size-full grow overflow-hidden">
           <Image
             src="/assets/images/gas3.jpg"
             alt="image of gas station fuel hose dispensing into car"
@@ -34,13 +41,6 @@ const WelcomeRow = function WelcomeRow() {
             fill
           />
         </div>
-        <div className="text-xs md:w-1/3 md:text-lg">
-          <p className="!my-0 !py-0 md:my-3 md:py-1">
-            Warrior convenience stores strive to provide superior customer
-            service, selection and value to the communities we serve and live
-            in.
-          </p>
-        </div>
       </div>
     </div>
   );
@@ -48,21 +48,33 @@ const WelcomeRow = function WelcomeRow() {
 
 const LocationsRow = function LocationsRow() {
   return (
-    <div className="relative">
-      <div className="float-right inline-block w-full md:w-4/5 xl:w-4/5">
-        <LocationsOverview />
-      </div>
-      <div className="relative hidden h-80 w-1/5 overflow-hidden align-bottom md:inline-block">
-        <Image
-          src="/assets/images/gas2.jpg"
-          alt="Close Up of Gas Pumps"
-          style={{
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-          className="rounded-md pr-3 drop-shadow-md"
-          fill
-        />
+    <div className="mt-6">
+      <h1
+        style={{
+          borderColor: AppConfig.colors[1],
+          borderBottomWidth: 3,
+          paddingLeft: 10,
+          marginBottom: 7,
+        }}
+      >
+        Warrior Locations
+      </h1>
+      <div className="relative grid flex-row-reverse gap-2">
+        <div className="flex grow">
+          <LocationsOverview />
+        </div>
+        <div className="relative hidden w-min grow overflow-hidden align-bottom md:inline-block">
+          <Image
+            src="/assets/images/gas2.jpg"
+            alt="Close Up of Gas Pumps"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+            className="rounded-md drop-shadow-md"
+            fill
+          />
+        </div>
       </div>
     </div>
   );
@@ -70,7 +82,7 @@ const LocationsRow = function LocationsRow() {
 
 const ImageCardRow = function ImageCardRow() {
   return (
-    <div>
+    <div className="flex flex-row content-stretch justify-center gap-4">
       <ImageTitleCard
         src="/assets/images/chicken-tender.png"
         title="Fresh Hot Food"
@@ -83,7 +95,6 @@ const ImageCardRow = function ImageCardRow() {
         src="/assets/images/community.jpg"
         title="Low Prices Always"
       />
-      <br className="clear-both" />
     </div>
   );
 };
@@ -102,24 +113,22 @@ export default function Index() {
     }
   }
   return (
-    <div>
-      <div>
+    <div className="flex flex-col">
+      <div className="flex">
         <h1
           style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}
-          className="mb-1"
+          className="mb-1 grow"
         >
           Welcome to Warrior Quick Stop!
         </h1>
       </div>
-      <div>
+      <div className="flex-row">
         <WelcomeRow />
       </div>
-      <br className="clear-both" />
-      <div>
+      <div className="flex-row">
         <LocationsRow />
       </div>
-      <br className="clear-both" />
-      <div>
+      <div className="flex-row">
         <div className="relative rounded border border-solid border-gray-300 p-4 shadow-md">
           <h2
             className="mb-2 text-center"
@@ -132,7 +141,7 @@ export default function Index() {
           <ImageCardRow />
         </div>
       </div>
-      <div>
+      <div className="flex-row">
         <br />
         <div className="relative rounded border border-solid border-gray-300 p-4 shadow-md">
           <h2 style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}>
