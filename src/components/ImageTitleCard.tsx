@@ -17,16 +17,27 @@ const ImageTitleCard = function ImageTitleCard(
       style={{ marginRight: '6.25%' }}
       className="float-right w-1/4 rounded-md border-2 border-gray-600 shadow-md"
     >
-      <div style={{ position: 'relative', minHeight: 200, overflow: 'hidden' }}>
+      <div
+        style={{
+          position: 'relative',
+          minHeight: '15vh',
+          overflow: 'hidden',
+        }}
+        className="md:h-48"
+      >
         <Image
           src={props.src}
           alt={altTextTemp}
-          style={{ objectFit: 'cover', objectPosition: 'center -50px' }}
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+            height: '100%',
+          }}
           fill
         />
       </div>
       <h3
-        className="text-center"
+        className="text-center text-sm md:text-lg"
         style={{
           backgroundColor: `${AppConfig.colors[1]}`,
           color: `${AppConfig.colors[0]}`,

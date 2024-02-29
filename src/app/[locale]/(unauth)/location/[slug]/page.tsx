@@ -43,11 +43,12 @@ export async function generateMetadata(props: ILocationDetailPropsSlug) {
   };
 }
 
-export function LocationDetailDirectionsPanel(props: ILocationDetailPropsSlug) {
+function LocationDetailDirectionsPanel(props: ILocationDetailPropsSlug) {
   const data =
     AppConfig.locationDetailsArray[
       AppConfig.locationArray.indexOf(props.params.slug)
     ];
+  // ✔️
   return (
     <div className="relative m-1 rounded border border-solid border-gray-300 p-1 shadow-md">
       <h3
@@ -122,16 +123,67 @@ export function LocationDetailDirectionsPanel(props: ILocationDetailPropsSlug) {
             {data?.address_notes}
           </span>
         </div>
+        <div className="text-base">
+          <span>Phone: {data?.phone_number}</span>
+        </div>
+        <div className="flex flex-row text-center text-base">
+          <div className="flex-1">✅ Tap Pay</div>
+          <div className="flex-1">✅ EBT</div>
+          <div className="flex-1">✅ Bathroom</div>
+        </div>
       </div>
     </div>
   );
 }
 
-export function LocationDetailHoursInfoPanel(props: ILocationDetailPropsSlug) {
+function LocationDetailHoursInfoPanel(props: ILocationDetailPropsSlug) {
   const data: ILocationDetails | undefined =
     AppConfig.locationDetailsArray[
       AppConfig.locationArray.indexOf(props.params.slug)
     ];
+  const hoursMapFn = function displayDaysOfWeek(elt: string) {
+    let hr;
+    let hrOpen = 4;
+    let minOpen = 0;
+    let hrClose = 11; // convert from 24 hr time
+    let minClose = 0;
+
+    if (data?.hours) {
+      hr = data.hours[elt as keyof typeof data.hours];
+      hrOpen = hr?.hour_open % 12;
+      hrClose = hr?.hour_close % 12; // convert from 24 hr time
+      if (hr?.minute_open) {
+        minOpen = hr.minute_open;
+      }
+      if (hr?.minute_close) {
+        minClose = hr.minute_close;
+      }
+    }
+
+    let label = 'pm';
+    if (hrClose === 0) {
+      hrClose = 12; // mod sets to zero if 12
+      label = 'am';
+    }
+    let dayOfWeekRowStyle = {};
+    if (elt === currentDayOfWeek) {
+      dayOfWeekRowStyle = { fontWeight: 'bold' };
+    }
+    return (
+      <tr key={elt} style={dayOfWeekRowStyle}>
+        <td>{elt.charAt(0).toUpperCase() + elt.slice(1)}</td>
+        <td>
+          {`${hrOpen}:${minOpen.toString().padStart(2, '0')}`}
+          {amLabel}
+        </td>
+        <td className="text-xs">to</td>
+        <td>
+          {`${hrClose}:${minClose.toString().padStart(2, '0')}`}
+          {label === 'am' ? amLabel : pmLabel}
+        </td>
+      </tr>
+    );
+  };
   return (
     <div className="relative m-1 rounded border border-solid border-gray-300 p-1 shadow-md">
       <h3
@@ -141,40 +193,7 @@ export function LocationDetailHoursInfoPanel(props: ILocationDetailPropsSlug) {
         Hours of Operation
       </h3>
       <table className="w-full text-sm">
-        {Array.from(daysOfWeek).map(function displayDaysOfWeek(elt) {
-          let hr;
-          let hrOpen = 4;
-          let hrClose = 11; // convert from 24 hr time
-          if (data?.hours) {
-            hr = data.hours[elt as keyof typeof data.hours];
-            hrOpen = hr?.hour_open;
-            hrOpen -= 0.5;
-            hrClose = hr?.hour_close % 12; // convert from 24 hr time
-          }
-          let label = 'pm';
-          if (hrClose === 0) {
-            hrClose = 12; // mod sets to zero if 12
-            label = 'am';
-          }
-          let dayOfWeekRowStyle = {};
-          if (elt === currentDayOfWeek) {
-            dayOfWeekRowStyle = { fontWeight: 'bold' };
-          }
-          return (
-            <tr key={elt} style={dayOfWeekRowStyle}>
-              <td>{elt.charAt(0).toUpperCase() + elt.slice(1)}</td>
-              <td>
-                {`${hrOpen}:30`}
-                {amLabel}
-              </td>
-              <td className="text-xs">to</td>
-              <td>
-                {`${hrClose}:00`}
-                {label === 'am' ? amLabel : pmLabel}
-              </td>
-            </tr>
-          );
-        })}
+        {Array.from(daysOfWeek).map(hoursMapFn)}
       </table>
       <p
         className="text-xs text-gray-600"
@@ -187,7 +206,7 @@ export function LocationDetailHoursInfoPanel(props: ILocationDetailPropsSlug) {
   );
 }
 
-export function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
+function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
   const data =
     AppConfig.locationDetailsArray[
       AppConfig.locationArray.indexOf(props.params.slug)
@@ -233,6 +252,30 @@ export function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
   );
 }
 
+function LocationDetailServicesPanelContents(props: ILocationDetailPropsSlug) {
+  const data =
+    AppConfig.locationDetailsArray[
+      AppConfig.locationArray.indexOf(props.params.slug)
+    ] || AppConfig.defaultLocationDetails;
+  return (
+    <div>
+      <h3
+        style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}
+        className="mb-1"
+      >
+        Services
+      </h3>
+      <ul className="ml-10 list-outside list-disc">
+        {Array.from(data.services).map((elt) => (
+          <li id={elt} key={elt}>
+            {elt}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 const LocationDetailPage = (props: ILocationDetailPropsSlug) => {
   const t = useTranslations('LocationSlug');
   const data =
@@ -249,28 +292,22 @@ const LocationDetailPage = (props: ILocationDetailPropsSlug) => {
         {t('header', { slug: data?.name })}
       </h1>
       <div className="relative w-full">
-        <div className="inline-block w-3/12 align-top" style={{ top: 0 }}>
+        <div
+          className="inline-block w-full align-top md:w-3/12"
+          style={{ top: 0 }}
+        >
           <LocationDetailHoursInfoPanel params={props.params} />
         </div>
-        <div className="inline-block w-6/12 align-top">
+        <div className="inline-block w-full align-top md:w-6/12">
           <LocationDetailDirectionsPanel params={props.params} />
         </div>
-        <div className="inline-block w-3/12 align-top">
+        <div className="inline-block w-full align-top md:w-3/12">
           <LocationDetailPhotosPanel params={props.params} />
         </div>
       </div>
       <br className="clear-both" />
       <div>
-        <h3
-          style={{ borderBottom: `4px solid ${AppConfig.colors[1]}` }}
-          className="mb-1"
-        >
-          Services
-        </h3>
-        <ul>
-          <li>Gas</li>
-          <li>Vapes</li>
-        </ul>
+        <LocationDetailServicesPanelContents params={props.params} />
       </div>
     </div>
   );

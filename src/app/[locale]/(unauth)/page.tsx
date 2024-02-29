@@ -1,8 +1,10 @@
+/* eslint-disable no-plusplus */
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
 import { ImageTitleCard } from '@/components/ImageTitleCard';
 import { LocationsOverview } from '@/components/LocationsOverview';
+import type { ILocationDetails } from '@/utils/AppConfig';
 import { AppConfig } from '@/utils/AppConfig';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -17,30 +19,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-/**
-        <ResponsiveImage
-          src="/assets/images/gas3.jpg"
-          dimensionsVect={['65%', '100%']}
-          imgOffset={['-80', '0']}
-          altText="Image 3"
-        /> */
-
-/* <div>
-        <div style={{ width: '80%', display: 'inline-block' }}>
-          <LocationsOverview />
-        </div>
-        <div
-          className="float-right"
-          style={{ width: '19%', display: 'inline-block' }}
-        >
-          <h4>Testimonials</h4>
-          <ul>
-            <li>"Review" - Person</li>
-          </ul>
-        </div>
-      </div> */
-
-export function WelcomeRow() {
+const WelcomeRow = function WelcomeRow() {
   return (
     <div className="relative w-full overflow-hidden">
       <div>
@@ -49,14 +28,14 @@ export function WelcomeRow() {
             src="/assets/images/gas3.jpg"
             alt="image of gas station fuel hose dispensing into car"
             style={{
-              objectPosition: 'center -120px',
+              objectPosition: 'center 55%',
             }}
             className="rounded-md object-cover drop-shadow-md"
             fill
           />
         </div>
         <div className="text-xs md:w-1/3 md:text-lg">
-          <p className="md:py- !my-0 !py-0 md:my-3">
+          <p className="!my-0 !py-0 md:my-3 md:py-1">
             Warrior convenience stores strive to provide superior customer
             service, selection and value to the communities we serve and live
             in.
@@ -65,39 +44,39 @@ export function WelcomeRow() {
       </div>
     </div>
   );
-}
+};
 
-export function LocationsRow() {
+const LocationsRow = function LocationsRow() {
   return (
     <div className="relative">
       <div className="float-right inline-block w-full md:w-4/5 xl:w-4/5">
         <LocationsOverview />
       </div>
-      <div className="relative hidden w-1/5 overflow-hidden md:inline-block">
+      <div className="relative hidden h-80 w-1/5 overflow-hidden align-bottom md:inline-block">
         <Image
           src="/assets/images/gas2.jpg"
           alt="Close Up of Gas Pumps"
           style={{
             objectFit: 'cover',
-            objectPosition: 'center -50px',
+            objectPosition: 'center',
           }}
-          className="rounded-md drop-shadow-md"
+          className="rounded-md pr-3 drop-shadow-md"
           fill
         />
       </div>
     </div>
   );
-}
+};
 
-export function ImageCardRow() {
+const ImageCardRow = function ImageCardRow() {
   return (
     <div>
       <ImageTitleCard
-        src="/assets/images/chicken-tender.jpg"
+        src="/assets/images/chicken-tender.png"
         title="Fresh Hot Food"
       />
       <ImageTitleCard
-        src="/assets/images/vape.jpg"
+        src="/assets/images/vape.png"
         title="Extensive Vape Selection"
       />
       <ImageTitleCard
@@ -107,9 +86,21 @@ export function ImageCardRow() {
       <br className="clear-both" />
     </div>
   );
-}
+};
 
 export default function Index() {
+  const servicesArray = [];
+  const locations =
+    AppConfig.locationDetailsArray ||
+    Array<ILocationDetails | undefined>(AppConfig.defaultLocationDetails);
+  for (let i = 0; i < locations.length; i++) {
+    if (locations && locations[i]) {
+      if (Object.prototype.hasOwnProperty.call(locations[i], 'services'))
+        for (let j = 0; j < Array(locations[i]?.services).length; j++) {
+          servicesArray.push(locations[i]?.services[j]);
+        }
+    }
+  }
   return (
     <div>
       <div>
@@ -148,13 +139,9 @@ export default function Index() {
             Services & Products
           </h2>
           <ul className="ml-8 list-disc">
-            <li>Gasoline & Diesel</li>
-            <li>Propane</li>
-            <li>Vapes</li>
-            <li>Cigarettes</li>
-            <li>Beer</li>
-            <li>Car Wash</li>
-            <li>Tire Service & Oil Change</li>
+            {Array.from(servicesArray).map((elt) => {
+              return <li key={elt}>{elt}</li>;
+            })}
             <li>More...</li>
           </ul>
         </div>

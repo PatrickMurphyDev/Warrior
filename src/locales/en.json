@@ -44,7 +44,8 @@
     "meta_title": "Warrior's Quick Stop - {slug}",
     "meta_description": "Warrior's Quick Stop {slug} description",
     "header": "Warrior's {slug}",
-    "content": ""
+    "content": "",
+    "at-the-pump-24": "⛽ at the pump 24/7 w/ Credit or Debit"
   },
   "SignIn": {
     "meta_title": "Sign in",
@@ -67,5 +68,17 @@
     "sign_out": "Sign out"
   },
   "meta_title": "Warrior Quick Stop Gas Stations Locations",
-  "meta_description": "Warrior Quick Stop has various locations across Central Washington State, in Cle Elum, WA; Ellensburg, WA; Yakima, WA; that offer various services including gas, vapes, tobacco, beer, wine, seltzer, convienience items and more"
+  "meta_description": "Warrior Quick Stop has various locations across Central Washington State, in Cle Elum, WA; Ellensburg, WA; Yakima, WA; that offer various services including gas, vapes, tobacco, beer, wine, seltzer, convienience items and more",
+  "vapes": "Vapes",
+  "gas": "Gas",
+  "services": "Services",
+  "photos-0": "Photos",
+  "view": "View",
+  "photo-of-our-store-warriors-quick-stop": "Photo of our store, Warrior's Quick Stop",
+  "photos": "Photos",
+  "w-credit-or-debit": "",
+  "hours-of-operation": "Hours of Operation",
+  "get-directions": "Get Directions",
+  "map-of-location": "Map of Location",
+  "where-to-find-us": "Where to Find Us"
 }

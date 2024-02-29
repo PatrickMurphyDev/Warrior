@@ -1,6 +1,12 @@
+import type { LocalePrefix } from 'node_modules/next-intl/dist/types/src/shared/types';
+
+const localePrefix: LocalePrefix = 'as-needed';
+
 export interface ITimeSpan {
   hour_open: number;
+  minute_open?: number;
   hour_close: number;
+  minute_close?: number;
 }
 export interface ILocationHours {
   monday: ITimeSpan;
@@ -45,7 +51,7 @@ export interface IAppConfig {
   name: string;
   locales: Array<string>;
   defaultLocale: string;
-  localePrefix: string;
+  localePrefix: LocalePrefix;
   colors: Array<string>;
   locationArray: Array<string>;
   locationDetailsArray: Array<ILocationDetails>;
@@ -57,7 +63,7 @@ export const AppConfig: IAppConfig = {
   name: "Warrior's Quick Stop",
   locales: ['en', 'es', 'bn', 'hi'],
   defaultLocale: 'en',
-  localePrefix: '',
+  localePrefix,
   colors: ['#ecb21d', '#852324', '#C13336', '#D45E60'],
   locationArray: ['Cle-Elum-West', 'Cle-Elum-East', 'Ellensburg'],
   locationDetailsArray: Array<ILocationDetails>(
@@ -79,13 +85,13 @@ export const AppConfig: IAppConfig = {
       address_notes: 'Located less than a mile from exit 87 on I-90.',
       phone_number: '509-899-0222',
       hours: {
-        monday: { hour_open: 4.5, hour_close: 23 },
-        tuesday: { hour_open: 4.5, hour_close: 23 },
-        wednesday: { hour_open: 4.5, hour_close: 23 },
-        thursday: { hour_open: 4.5, hour_close: 23 },
-        friday: { hour_open: 4.5, hour_close: 24 },
-        saturday: { hour_open: 4.5, hour_close: 24 },
-        sunday: { hour_open: 4.5, hour_close: 23 },
+        monday: { hour_open: 5, minute_open: 0, hour_close: 24 },
+        tuesday: { hour_open: 5, minute_open: 0, hour_close: 24 },
+        wednesday: { hour_open: 5, minute_open: 0, hour_close: 24 },
+        thursday: { hour_open: 5, minute_open: 0, hour_close: 24 },
+        friday: { hour_open: 5, minute_open: 0, hour_close: 24 },
+        saturday: { hour_open: 5, minute_open: 0, hour_close: 24 },
+        sunday: { hour_open: 5, minute_open: 0, hour_close: 24 },
       },
     },
     {
@@ -102,17 +108,17 @@ export const AppConfig: IAppConfig = {
         zipcode: 98922,
       },
       imageList: ['gas-station-night.jpg'],
-      services: [],
+      services: ['Oil Changes', 'Tire Services'],
       address_notes: '',
       phone_number: '509-899-0222',
       hours: {
-        monday: { hour_open: 4.5, hour_close: 23 },
-        tuesday: { hour_open: 4.5, hour_close: 23 },
-        wednesday: { hour_open: 4.5, hour_close: 23 },
-        thursday: { hour_open: 4.5, hour_close: 23 },
-        friday: { hour_open: 4.5, hour_close: 24 },
-        saturday: { hour_open: 4.5, hour_close: 24 },
-        sunday: { hour_open: 4.5, hour_close: 23 },
+        monday: { hour_open: 8, minute_open: 0, hour_close: 19 },
+        tuesday: { hour_open: 8, minute_open: 0, hour_close: 19 },
+        wednesday: { hour_open: 8, hour_close: 19 },
+        thursday: { hour_open: 8, hour_close: 19, minute_close: 0 },
+        friday: { hour_open: 8, minute_open: 0, hour_close: 19 },
+        saturday: { hour_open: 8, minute_open: 0, hour_close: 19 },
+        sunday: { hour_open: 8, minute_open: 0, hour_close: 19 },
       },
     },
     {
@@ -141,17 +147,24 @@ export const AppConfig: IAppConfig = {
         'vape-girl-1.jpg',
         'vape-girl-2.jpg',
       ],
-      services: [],
-      address_notes: '',
+      services: [
+        'Gasoline & Diesel',
+        'Propane',
+        'Disposable Vapes',
+        'Refillable Vapes',
+        'Cigarettes & Beer',
+      ],
+      address_notes:
+        'At the corner of Capitol Ave and Main St, 1 block from Fred Meyer.',
       phone_number: '509-899-0222',
       hours: {
-        monday: { hour_open: 4.5, hour_close: 23 },
-        tuesday: { hour_open: 4.5, hour_close: 23 },
-        wednesday: { hour_open: 4.5, hour_close: 23 },
-        thursday: { hour_open: 4.5, hour_close: 23 },
-        friday: { hour_open: 4.5, hour_close: 24 },
-        saturday: { hour_open: 4.5, hour_close: 24 },
-        sunday: { hour_open: 4.5, hour_close: 23 },
+        monday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        tuesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        wednesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        thursday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        friday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        saturday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        sunday: { hour_open: 4, minute_open: 30, hour_close: 23 },
       },
     },
   ),
@@ -173,13 +186,13 @@ export const AppConfig: IAppConfig = {
     address_notes: '',
     phone_number: '',
     hours: {
-      monday: { hour_open: 4.5, hour_close: 23 },
-      tuesday: { hour_open: 4.5, hour_close: 23 },
-      wednesday: { hour_open: 4.5, hour_close: 23 },
-      thursday: { hour_open: 4.5, hour_close: 23 },
-      friday: { hour_open: 4.5, hour_close: 24 },
-      saturday: { hour_open: 4.5, hour_close: 24 },
-      sunday: { hour_open: 4.5, hour_close: 23 },
+      monday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+      tuesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+      wednesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+      thursday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+      friday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+      saturday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+      sunday: { hour_open: 4, minute_open: 30, hour_close: 23 },
     },
   },
   aboutPageDetails: {
@@ -213,13 +226,13 @@ locationData: {
         zipcode: 98926,
       },
       hours: {
-        monday: { hour_open: 4.5, hour_close: 23 },
-        tuesday: { hour_open: 4.5, hour_close: 23 },
-        wednesday: { hour_open: 4.5, hour_close: 23 },
-        thursday: { hour_open: 4.5, hour_close: 23 },
-        friday: { hour_open: 4.5, hour_close: 24 },
-        saturday: { hour_open: 4.5, hour_close: 24 },
-        sunday: { hour_open: 4.5, hour_close: 23 },
+        monday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        tuesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        wednesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        thursday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        friday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        saturday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        sunday: { hour_open: 4, minute_open: 30, hour_close: 23 },
       },
     },
     'Cle-Elum-South': {
@@ -235,13 +248,13 @@ locationData: {
         zipcode: 98926,
       },
       hours: {
-        monday: { hour_open: 4.5, hour_close: 23 },
-        tuesday: { hour_open: 4.5, hour_close: 23 },
-        wednesday: { hour_open: 4.5, hour_close: 23 },
-        thursday: { hour_open: 4.5, hour_close: 23 },
-        friday: { hour_open: 4.5, hour_close: 24 },
-        saturday: { hour_open: 4.5, hour_close: 24 },
-        sunday: { hour_open: 4.5, hour_close: 23 },
+        monday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        tuesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        wednesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        thursday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        friday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        saturday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        sunday: { hour_open: 4, minute_open: 30, hour_close: 23 },
       },
     },
     Ellensburg: {
@@ -257,13 +270,13 @@ locationData: {
         zipcode: 98926,
       },
       hours: {
-        monday: { hour_open: 4.5, hour_close: 23 },
-        tuesday: { hour_open: 4.5, hour_close: 23 },
-        wednesday: { hour_open: 4.5, hour_close: 23 },
-        thursday: { hour_open: 4.5, hour_close: 23 },
-        friday: { hour_open: 4.5, hour_close: 24 },
-        saturday: { hour_open: 4.5, hour_close: 24 },
-        sunday: { hour_open: 4.5, hour_close: 23 },
+        monday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        tuesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        wednesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        thursday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        friday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        saturday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        sunday: { hour_open: 4, minute_open: 30, hour_close: 23 },
       },
     },
     Yakima: {
@@ -279,13 +292,13 @@ locationData: {
         zipcode: 98926,
       },
       hours: {
-        monday: { hour_open: 4.5, hour_close: 23 },
-        tuesday: { hour_open: 4.5, hour_close: 23 },
-        wednesday: { hour_open: 4.5, hour_close: 23 },
-        thursday: { hour_open: 4.5, hour_close: 23 },
-        friday: { hour_open: 4.5, hour_close: 24 },
-        saturday: { hour_open: 4.5, hour_close: 24 },
-        sunday: { hour_open: 4.5, hour_close: 23 },
+        monday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        tuesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        wednesday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        thursday: { hour_open: 4, minute_open: 30, hour_close: 23 },
+        friday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        saturday: { hour_open: 4, minute_open: 30, hour_close: 24 },
+        sunday: { hour_open: 4, minute_open: 30, hour_close: 23 },
       },
     },
   },

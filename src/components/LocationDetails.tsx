@@ -138,8 +138,11 @@ function LocationDetails(props: ILocationDetailPropList): React.ReactNode {
       style={{ textDecoration: 'none', border: 'none', color: '#222' }}
     >
       <li
-        className="mb-3 mt-2 rounded-md border-2 border-solid border-gray-500  pl-2 shadow-lg"
-        style={{ height: '60px', display: 'inline-block', width: '100%' }}
+        className="inline-block w-full rounded-md border-2 border-solid border-gray-500 pl-2  shadow-lg"
+        style={{
+          height: '93px',
+          marginBottom: '10px',
+        }}
       >
         <div>
           <span>{LocationDetailsDataObj.name}</span>

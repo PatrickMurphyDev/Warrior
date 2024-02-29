@@ -107,7 +107,10 @@ const LocationDetailPhotosPage = (props: ILocationDetailPropsSlug) => {
         ))}
       </div>
       <br className="clear-both" />
-      <a href="." className="rounded border border-solid border-black p-2">
+      <a
+        href="."
+        className="rounded border border-solid border-black p-2 text-sm"
+      >
         &lt; Back to {data.name} Location Details
       </a>
     </div>
