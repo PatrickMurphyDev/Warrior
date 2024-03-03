@@ -58,6 +58,10 @@ export interface IAppConfig {
   defaultLocationDetails: ILocationDetails;
   aboutPageDetails: IAboutPageDetails;
 }
+export interface INumberRange {
+  minNumber: number;
+  maxNumber: number;
+}
 
 export const AppConfig: IAppConfig = {
   name: "Warrior's Quick Stop",

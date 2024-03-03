@@ -135,15 +135,20 @@ function LocationDetails(props: ILocationDetailPropList): React.ReactNode {
         pathname: `/location/${LocationDetailsDataObj.key}`,
       }}
       className="flex w-full grow"
-      style={{ textDecoration: 'none', border: 'none', color: '#222' }}
+      style={{
+        textDecoration: 'none',
+        border: 'none',
+        color: '#222',
+      }}
     >
-      <li className="flex w-full rounded-md border-2 border-solid border-gray-500 p-3 shadow-md">
+      <li className="flex w-full rounded-md border-2 border-solid border-gray-500 p-3 shadow-md hover:border-gray-700">
         <div className="grow flex-col">
           <span>{LocationDetailsDataObj.name}</span>
           <LocationDetailsAddress id={props.id} />
         </div>
-        <div>
+        <div className="flex flex-col">
           <OpenStatusLabel id={props.id} />
+          <span className="mt-3 text-xs text-gray-600">Details &gt;</span>
         </div>
       </li>
     </Link>

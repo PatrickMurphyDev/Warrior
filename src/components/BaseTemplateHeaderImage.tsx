@@ -11,13 +11,13 @@ const inMax: number = 170.0;
 const outMin: number = 120.0;
 const outMax: number = 55.0;
 
-const BaseTemplateHeaderController = function (
+const BaseTemplateHeaderController = function scaleVar(
   inValParam: number,
   inMinParam: number,
   inMaxParam: number,
   outMinParam: number,
   outMaxParam: number,
-) {
+): number {
   if (inValParam >= inMaxParam) {
     return outMaxParam;
   }
@@ -139,7 +139,8 @@ export default function BaseTemplateHeaderImage() {
           height: small,
         }}
       >
-        <img
+        <Image
+          sizes="(max-width:600px) 600px, (max-width:900px)900px, (max-width:1200px) 1200px, 1500px"
           alt="Warrior Gas Station Cle Elum"
           src="/assets/images/layout-header-trim-center.png"
           className="inline-block size-full"
@@ -147,6 +148,7 @@ export default function BaseTemplateHeaderImage() {
             objectFit: 'cover',
             objectPosition: 'center',
           }}
+          fill
         />
       </div>
       <div

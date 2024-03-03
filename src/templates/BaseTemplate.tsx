@@ -31,7 +31,7 @@ const BaseTemplate = (props: {
   return (
     <div className="w-full px-1 text-gray-700 antialiased">
       <div className="mx-auto max-w-screen-lg">
-        <header className="sticky top-0 z-50 border-b border-gray-800">
+        <header className="sticky top-0 z-[2000] border-b border-gray-800 ">
           <BaseTemplateHeaderImage />
           <div
             className="flex justify-between"
