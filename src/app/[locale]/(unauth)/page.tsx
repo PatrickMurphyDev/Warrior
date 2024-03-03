@@ -136,7 +136,7 @@ export default function Index() {
               borderBottom: `4px solid ${AppConfig.colors[1]}`,
             }}
           >
-            Why Visit Warrior&apos;s Quick Stop?
+            Warrior&apos;s Quick Stop
           </h2>
           <ImageCardRow />
         </div>
