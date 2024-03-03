@@ -1,15 +1,14 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unsafe-optional-chaining */
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
+import LocationDetailPhotosPanel from '@/components/LocationDetailPhotosPanel';
 import { AppConfig } from '@/utils/AppConfig';
 
-type ILocationDetailPropsSlug = {
-  params: { slug: string; locale: string };
-  photoID?: number;
+export type ILocationDetailPropsSlug = {
+  params: { slug: string; locale: string; photoID?: number };
 };
 
 export function generateStaticParams() {
@@ -29,52 +28,6 @@ export async function generateMetadata(props: ILocationDetailPropsSlug) {
     description: t('meta_description', { slug: props.params.slug }),
   };
 }
-
-const LocdetPhotosPanel = function LocationDetailPhotosPanel(
-  props: ILocationDetailPropsSlug,
-) {
-  const data =
-    AppConfig.locationDetailsArray[
-      AppConfig.locationArray.indexOf(props.params.slug)
-    ] || AppConfig.defaultLocationDetails;
-  let photoIndexVar = 0;
-  if (props.photoID) {
-    photoIndexVar = props.photoID;
-  }
-  const imgUrl = `/assets/images/${data.imageList[photoIndexVar]}`;
-
-  return (
-    <div className="relative m-1 rounded border border-solid border-gray-300 p-1 shadow-md">
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'inline-block',
-          overflow: 'hidden',
-          position: 'relative',
-          minHeight: 150,
-          top: 0,
-        }}
-      >
-        <Image
-          src={imgUrl}
-          alt="Photo of our store, Warrior's Quick Stop"
-          style={{
-            objectFit: 'cover',
-            objectPosition: 'center center',
-          }}
-          fill
-        />
-      </div>
-      <h4
-        style={{ borderBottom: `2px solid ${AppConfig.colors[1]}` }}
-        className="mb-1 pl-1"
-      >
-        {data?.imageList[photoIndexVar]}
-      </h4>
-    </div>
-  );
-};
 
 export default function LocationDetailPhotosPage(
   props: ILocationDetailPropsSlug,
@@ -101,11 +54,15 @@ export default function LocationDetailPhotosPage(
         {`${t('header', { slug: data?.name })} Photos`}
       </h1>
       <div className="relative w-full">
-        {data?.imageList.map((elt) => (
-          <div className="inline-block w-3/12 align-top" key={elt}>
-            <LocdetPhotosPanel params={props.params} photoID={photoMapId++} />
-          </div>
-        ))}
+        {data?.imageList.map(function mapDisplayPhotosPanels(elt) {
+          const tempParams = props.params;
+          tempParams.photoID = photoMapId++;
+          return (
+            <div className="inline-block w-3/12 align-top" key={elt}>
+              <LocationDetailPhotosPanel params={tempParams} />
+            </div>
+          );
+        })}
       </div>
       <br className="clear-both" />
       <a
