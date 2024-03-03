@@ -30,7 +30,7 @@ export async function generateMetadata(props: ILocationDetailPropsSlug) {
   };
 }
 
-export function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
+function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
   const data =
     AppConfig.locationDetailsArray[
       AppConfig.locationArray.indexOf(props.params.slug)
