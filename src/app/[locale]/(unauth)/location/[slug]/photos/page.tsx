@@ -7,7 +7,7 @@ import { getTranslations } from 'next-intl/server';
 
 import { AppConfig } from '@/utils/AppConfig';
 
-type ILocationDetailPropsSlug = {
+export type ILocationDetailPropsSlug = {
   params: { slug: string; locale: string };
   photoID?: number;
 };
