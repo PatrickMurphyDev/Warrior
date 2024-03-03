@@ -7,7 +7,7 @@ import { getTranslations } from 'next-intl/server';
 
 import { AppConfig } from '@/utils/AppConfig';
 
-export type ILocationDetailPropsSlug = {
+type ILocationDetailPropsSlug = {
   params: { slug: string; locale: string };
   photoID?: number;
 };
@@ -30,7 +30,9 @@ export async function generateMetadata(props: ILocationDetailPropsSlug) {
   };
 }
 
-function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
+const LocdetPhotosPanel = function LocationDetailPhotosPanel(
+  props: ILocationDetailPropsSlug,
+) {
   const data =
     AppConfig.locationDetailsArray[
       AppConfig.locationArray.indexOf(props.params.slug)
@@ -72,9 +74,11 @@ function LocationDetailPhotosPanel(props: ILocationDetailPropsSlug) {
       </h4>
     </div>
   );
-}
+};
 
-const LocationDetailPhotosPage = (props: ILocationDetailPropsSlug) => {
+export default function LocationDetailPhotosPage(
+  props: ILocationDetailPropsSlug,
+) {
   const t = useTranslations('LocationSlug');
   const data =
     AppConfig.locationDetailsArray[
@@ -99,10 +103,7 @@ const LocationDetailPhotosPage = (props: ILocationDetailPropsSlug) => {
       <div className="relative w-full">
         {data?.imageList.map((elt) => (
           <div className="inline-block w-3/12 align-top" key={elt}>
-            <LocationDetailPhotosPanel
-              params={props.params}
-              photoID={photoMapId++}
-            />
+            <LocdetPhotosPanel params={props.params} photoID={photoMapId++} />
           </div>
         ))}
       </div>
@@ -115,8 +116,4 @@ const LocationDetailPhotosPage = (props: ILocationDetailPropsSlug) => {
       </a>
     </div>
   );
-};
-// <p>{t('content')}</p>
-export const dynamicParams = false;
-
-export default LocationDetailPhotosPage;
+}
