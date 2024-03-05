@@ -99,7 +99,6 @@ export function BaseTemplateHeaderMainTitle() {
               objectPosition: 'center center',
               left: '-33%',
             }}
-            unoptimized
             fill
           />
         </span>
@@ -140,7 +139,7 @@ export default function BaseTemplateHeaderImage() {
         }}
       >
         <Image
-          sizes="(max-width:600px) 600px, (max-width:900px)900px, (max-width:1200px) 1200px, 1500px"
+          sizes="(max-width:550px) 550px, (max-width:900px)900px, (max-width:1200px) 1200px, 1500px"
           alt="Warrior Gas Station Cle Elum"
           src="/assets/images/layout-header-trim-center.png"
           className="inline-block size-full"
