@@ -69,12 +69,12 @@ export const AppConfig: IAppConfig = {
   defaultLocale: 'en',
   localePrefix,
   colors: ['#ecb21d', '#852324', '#C13336', '#D45E60'],
-  locationArray: ['Cle-Elum-West', 'Cle-Elum-East', 'Ellensburg'],
+  locationArray: ['Cle_Elum_West', 'Cle_Elum_East', 'Ellensburg'],
   locationDetailsArray: Array<ILocationDetails>(
     {
       visible: true,
       isOpen: true,
-      key: 'Cle-Elum-West',
+      key: 'Cle_Elum_West',
       name: 'Cle Elum West',
       description: '',
       address: {
@@ -101,7 +101,7 @@ export const AppConfig: IAppConfig = {
     {
       visible: true,
       isOpen: true,
-      key: 'Cle-Elum-East',
+      key: 'Cle_Elum_East',
       name: 'Cle Elum East',
       description: '',
       address: {
@@ -175,7 +175,7 @@ export const AppConfig: IAppConfig = {
   defaultLocationDetails: {
     visible: true,
     isOpen: true,
-    key: 'Cle-Elum-West',
+    key: 'Cle_Elum_West',
     name: 'Cle Elum West',
     description: '',
     address: {
